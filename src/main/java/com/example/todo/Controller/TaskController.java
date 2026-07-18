@@ -32,4 +32,10 @@ public class TaskController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+    @PutMapping(value="/update/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Task update(@PathVariable Long id, @RequestBody Task task){
+        return service.update(id, task);
+    }
 }

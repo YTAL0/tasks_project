@@ -33,5 +33,15 @@ public class TaskService {
         Task task = repository.findById(id).orElseThrow(()->new RuntimeException("Not exist"));
         repository.delete(task);
     }
+    public Task update(Long id, Task task){
+        Task entity = repository.findById(id).orElseThrow(()->new  RuntimeException("Not exist"));
+        entity.setName(task.getName());
+        entity.setPriority(task.getPriority());
+        entity.setDescription(task.getDescription());
+        entity.setDayWeek(task.getDayWeek());
+
+        return repository.save(entity);
+
+    }
 
 }
