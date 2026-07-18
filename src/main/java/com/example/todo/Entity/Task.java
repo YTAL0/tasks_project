@@ -1,5 +1,6 @@
 package com.example.todo.Entity;
 
+import com.example.todo.Entity.Enum.Priority;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,6 +17,8 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
-
+    private String name;
+    private Priority priority;
+    private String Description;
 
 }
