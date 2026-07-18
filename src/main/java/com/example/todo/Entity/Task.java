@@ -17,8 +17,13 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
+    @Column
     private String name;
-    private Priority priority;
+    @Column
+    private String priority;
+    @Column
     private String Description;
+    @Column(name = "Day_week")
+    private String DayWeek;
 
 }
