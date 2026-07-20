@@ -1,5 +1,6 @@
 package com.example.todo.Controller;
 
+import com.example.todo.Dto.TaskDto;
 import com.example.todo.Entity.Task;
 import com.example.todo.Service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class TaskController {
     TaskService service;
 
     @GetMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Task findByID(@PathVariable("id") Long id){
+    public TaskDto findByID(@PathVariable("id") Long id){
         return service.findByID(id);
     }
     @GetMapping(value= "/all", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -24,8 +25,8 @@ public class TaskController {
         return ResponseEntity.ok(service.findAll());
     }
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Task create(@RequestBody Task task){
-        return service.crete(task);
+    public TaskDto create(@RequestBody TaskDto TaskDto){
+        return service.crete(TaskDto);
     }
     @DeleteMapping(value="/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") Long id){
@@ -35,7 +36,7 @@ public class TaskController {
     @PutMapping(value="/update/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Task update(@PathVariable Long id, @RequestBody Task task){
-        return service.update(id, task);
+    public TaskDto update(@PathVariable Long id, @RequestBody TaskDto TaskDto){
+        return service.update(id, TaskDto);
     }
 }

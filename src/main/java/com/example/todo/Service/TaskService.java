@@ -1,46 +1,47 @@
 package com.example.todo.Service;
 
+import com.example.todo.Dto.TaskDto;
 import com.example.todo.Entity.Task;
+import com.example.todo.Mapper.ObjectMapper;
 import com.example.todo.Repository.TaskRepository;
-import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 import java.util.logging.Logger;
 
 @Service
 public class TaskService {
 
-    private Logger logger = Logger.getLogger(Task.class.getName());
+    private Logger logger = Logger.getLogger(TaskDto.class.getName());
 
     @Autowired
     TaskRepository repository;
 
-    public Task crete(Task task){
-        logger.info("Task Criada");
-        return repository.save(task);
+    public TaskDto crete(TaskDto TaskDto){
+        logger.info("TaskDto Criada");
+        var entity = ObjectMapper.parseObject(TaskDto, Task.class);
+        return ObjectMapper.parseObject(repository.save(entity), TaskDto.class);
     }
-    public Task findByID(long id){
-        return repository.findById(id).orElse(null);
+    public TaskDto findByID(long id){
+        var a = repository.findById(id).orElse(null);
+        return ObjectMapper.parseObject(a, TaskDto.class);
     }
-    public List<Task> findAll(){
-        return repository.findAll();
+    public List<TaskDto> findAll(){
+        var a = repository.findAll();
+        return ObjectMapper.parseListObject(a, TaskDto.class);
     }
     public void delete(Long id){
-        Task task = repository.findById(id).orElseThrow(()->new RuntimeException("Not exist"));
-        repository.delete(task);
+        Task Task = repository.findById(id).orElseThrow(()->new RuntimeException("Not exist"));
+        repository.delete(Task);
     }
-    public Task update(Long id, Task task){
+    public TaskDto update(Long id, TaskDto TaskDto){
         Task entity = repository.findById(id).orElseThrow(()->new  RuntimeException("Not exist"));
-        entity.setName(task.getName());
-        entity.setPriority(task.getPriority());
-        entity.setDescription(task.getDescription());
-        entity.setDayWeek(task.getDayWeek());
+        entity.setName(TaskDto.getName());
+        entity.setPriority(TaskDto.getPriority());
+        entity.setDescription(TaskDto.getDescription());
+        entity.setDayWeek(TaskDto.getDayWeek());
 
-        return repository.save(entity);
+        return ObjectMapper.parseObject(repository.save(entity), TaskDto.class);
 
     }
 
