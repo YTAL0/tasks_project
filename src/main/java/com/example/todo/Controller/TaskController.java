@@ -1,6 +1,6 @@
 package com.example.todo.Controller;
 
-import com.example.todo.v1.Dto.TaskDto;
+import com.example.todo.data.v1.Dto.TaskDto;
 import com.example.todo.Service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
