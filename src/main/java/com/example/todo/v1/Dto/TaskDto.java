@@ -1,4 +1,4 @@
-package com.example.todo.Dto;
+package com.example.todo.v1.Dto;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
