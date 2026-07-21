@@ -1,4 +1,4 @@
-package com.example.todo.data.V2;
+package com.example.todo.data.Dto.v1;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
-public class TaskDtoV2 {
+public class TaskDto {
     private long ID;
     private String name;
     private String priority;

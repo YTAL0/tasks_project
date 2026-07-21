@@ -1,6 +1,6 @@
 package com.example.todo.Service;
 
-import com.example.todo.data.v1.Dto.TaskDto;
+import com.example.todo.data.Dto.v1.TaskDto;
 import com.example.todo.Entity.Task;
 import com.example.todo.Mapper.ObjectMapper;
 import com.example.todo.Repository.TaskRepository;
