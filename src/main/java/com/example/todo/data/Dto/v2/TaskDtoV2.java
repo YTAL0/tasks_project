@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -15,4 +16,5 @@ public class TaskDtoV2 {
     private String priority;
     private String Description;
     private String DayWeek;
+    private Date createdAt;
 }
