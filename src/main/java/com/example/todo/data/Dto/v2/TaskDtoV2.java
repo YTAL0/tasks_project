@@ -16,5 +16,6 @@ public class TaskDtoV2 {
     private String priority;
     private String Description;
     private String DayWeek;
+    private String State;
     private Date createdAt;
 }
